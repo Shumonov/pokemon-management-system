@@ -91,9 +91,9 @@ namespace PokemonEH.Controllers
             return (_context.Pokemon?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        // New Action to Fetch data from PokeAPI
+        
         private const int PageSize = 12;
-
+        /// Fetches a list of Pokémon from the PokeAPI based on the given page number.
         public async Task<IActionResult> FetchFromAPI(int page = 1)
         {
             using (HttpClient httpClient = new HttpClient())
@@ -118,7 +118,7 @@ namespace PokemonEH.Controllers
         }
 
 
-
+        // Adds a Pokémon to the favorites list in the local database.
         [HttpPost]
         public async Task<IActionResult> AddToFavorites(string name, string imageUrl, int currentPage = 1)
         {
