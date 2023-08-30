@@ -39,5 +39,3 @@ dotnet run
 1. Register as a user.
 2. Log in to access the Pokémon fetching and favorites features.
 3. Fetch Pokémon data and add to your favorites list as needed.
-
-Open [https://pokeapi.co/docs/v2](PokéAPI) to view it in the browser.
