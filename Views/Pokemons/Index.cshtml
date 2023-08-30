@@ -1,0 +1,31 @@
+﻿@model IEnumerable<PokemonEH.Models.Pokemon>
+
+@{
+    ViewData["Title"] = "My Pokémon List";
+}
+
+<h2 class="mb-4">@ViewData["Title"]</h2>
+
+<p class="mb-4">
+    <a asp-action="FetchFromAPI" class="btn btn-primary">Add a Pokemon</a>
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-2 mb-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-center">@item.Name</h5>
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <img class="card-img-top" src="@item.ImageUrl" alt="@item.Name">
+                    </a>
+                    <div class="d-flex justify-content-center mt-2">
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mt-2">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

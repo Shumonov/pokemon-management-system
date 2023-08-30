@@ -1,0 +1,31 @@
+﻿@using PokemonEH.Models
+@model List<PokemonAPIModel>
+
+<h2 class="mb-4">All Pokémon</h2>
+
+<div class="row">
+    @foreach (var pokemon in Model)
+    {
+        <div class="col-md-2 mb-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-center">@pokemon.Name</h5>
+                    <img class="card-img-top" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/@(pokemon.Id).png" alt="@pokemon.Name">
+                    <div class="d-flex justify-content-center mt-2">
+                        <form method="post" asp-action="AddToFavorites" asp-controller="Pokemons">
+                            <input type="hidden" name="name" value="@pokemon.Name" />
+                            <input type="hidden" name="imageUrl" value="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/@(pokemon.Id).png" />
+                            <input type="hidden" name="currentPage" value="@(ViewBag.CurrentPage ?? 1)" />
+                            <button type="submit" class="btn btn-primary mt-2">Add to Favorites</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+<div class="mt-4 d-flex justify-content-center">
+    <a asp-action="FetchFromAPI" asp-route-page="@((int)ViewBag.CurrentPage + 1)" class="btn btn-outline-primary">Load More</a>
+</div>
