@@ -19,7 +19,7 @@ To set up the project, follow these steps:
 2. Navigate to the project directory:
 
 ```bash
-  cd PokemonEH
+  cd pokemon-management-system
 ```
 
 3. Restore the required packages: .NET Core projects use NuGet packages, and you may need to restore them if they're not already included.
